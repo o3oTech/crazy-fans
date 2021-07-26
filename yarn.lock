@@ -1132,6 +1132,17 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
+"@expo/browser-polyfill@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.npm.taobao.org/@expo/browser-polyfill/download/@expo/browser-polyfill-0.1.1.tgz#1c4ee31744fa2f8e07a7ec0bfd47fbea80deba8f"
+  integrity sha1-HE7jF0T6L44Hp+wL/Uf76oDeuo8=
+  dependencies:
+    expo-2d-context "^0.0.2"
+    fbemitter "^2.1.1"
+    text-encoding "^0.7.0"
+    uuid "^8.3.2"
+    xmldom-qsa "^1.0.3"
+
 "@expo/config-plugins@2.0.4":
   version "2.0.4"
   resolved "https://registry.nlark.com/@expo/config-plugins/download/@expo/config-plugins-2.0.4.tgz#955fd70a2aeefbe99ec71cecb1d7ea7b626dc79e"
@@ -1598,6 +1609,16 @@ accepts@~1.3.5, accepts@~1.3.7:
   dependencies:
     mime-types "~2.1.24"
     negotiator "0.6.2"
+
+adaptive-bezier-curve@1.0.3:
+  version "1.0.3"
+  resolved "https://registry.npm.taobao.org/adaptive-bezier-curve/download/adaptive-bezier-curve-1.0.3.tgz#477577abe87d7280d46ca41649f6c22646fe8227"
+  integrity sha1-R3V3q+h9coDUbKQWSfbCJkb+gic=
+
+adaptive-quadratic-curve@1.0.2:
+  version "1.0.2"
+  resolved "https://registry.npm.taobao.org/adaptive-quadratic-curve/download/adaptive-quadratic-curve-1.0.2.tgz#65b4190fc5711698d24f0ae7bd5fea6cda90010d"
+  integrity sha1-ZbQZD8VxFpjSTwrnvV/qbNqQAQ0=
 
 anser@^1.4.9:
   version "1.4.10"
@@ -2183,7 +2204,7 @@ collection-visit@^1.0.0:
     map-visit "^1.0.0"
     object-visit "^1.0.0"
 
-color-convert@^1.9.0:
+color-convert@^1.9.0, color-convert@^1.9.3:
   version "1.9.3"
   resolved "https://registry.nlark.com/color-convert/download/color-convert-1.9.3.tgz#bb71850690e1f136567de629d2d5471deda4c1e8"
   integrity sha1-u3GFBpDh8TZWfeYp0tVHHe2kweg=
@@ -2370,6 +2391,11 @@ cross-spawn@^6.0.0, cross-spawn@^6.0.5:
     shebang-command "^1.2.0"
     which "^1.2.9"
 
+css-font-parser@0.2.3:
+  version "0.2.3"
+  resolved "https://registry.npm.taobao.org/css-font-parser/download/css-font-parser-0.2.3.tgz#9a391d2e47086be5401e47274e687ec06e238c0e"
+  integrity sha1-mjkdLkcIa+VAHkcnTmh+wG4jjA4=
+
 css-in-js-utils@^2.0.0:
   version "2.0.1"
   resolved "https://registry.npm.taobao.org/css-in-js-utils/download/css-in-js-utils-2.0.1.tgz#3b472b398787291b47cfe3e44fecfdd9e914ba99"
@@ -2469,6 +2495,18 @@ destroy@~1.0.4:
   version "1.0.4"
   resolved "https://registry.nlark.com/destroy/download/destroy-1.0.4.tgz#978857442c44749e4206613e37946205826abd80"
   integrity sha1-l4hXRCxEdJ5CBmE+N5RiBYJqvYA=
+
+domexception@1.0.1:
+  version "1.0.1"
+  resolved "https://registry.npm.taobao.org/domexception/download/domexception-1.0.1.tgz#937442644ca6a31261ef36e3ec677fe805582c90"
+  integrity sha1-k3RCZEymoxJh7zbj7Gd/6AVYLJA=
+  dependencies:
+    webidl-conversions "^4.0.2"
+
+earcut@2.1.1:
+  version "2.1.1"
+  resolved "https://registry.nlark.com/earcut/download/earcut-2.1.1.tgz#157634e5f3ebb42224e475016e86a5b6ce556b45"
+  integrity sha1-FXY05fPrtCIk5HUBboalts5Va0U=
 
 ee-first@1.1.1:
   version "1.1.1"
@@ -2612,10 +2650,31 @@ expand-brackets@^2.1.4:
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
 
+expo-2d-context@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.npm.taobao.org/expo-2d-context/download/expo-2d-context-0.0.2.tgz#7aeea5b146b3f7091ca7d17fcf7a713024ef82f5"
+  integrity sha1-eu6lsUaz9wkcp9F/z3pxMCTvgvU=
+  dependencies:
+    adaptive-bezier-curve "1.0.3"
+    adaptive-quadratic-curve "1.0.2"
+    color-convert "^1.9.3"
+    css-font-parser "0.2.3"
+    domexception "1.0.1"
+    earcut "2.1.1"
+    gl-matrix "^2.4.0"
+    parse-bmfont-ascii "1.0.6"
+    string-format "0.5.0"
+    tess2 "^1.0.0"
+
 expo-application@~3.2.0:
   version "3.2.0"
   resolved "https://registry.nlark.com/expo-application/download/expo-application-3.2.0.tgz#d029445cbc486b66f31ec3b8d556334119cebf48"
   integrity sha1-0ClEXLxIa2bzHsO41VYzQRnOv0g=
+
+expo-asset-utils@~2.0.0:
+  version "2.0.0"
+  resolved "https://registry.npm.taobao.org/expo-asset-utils/download/expo-asset-utils-2.0.0.tgz#6c262c14cd61297591d9fdcb122a52d51eee0f8f"
+  integrity sha1-bCYsFM1hKXWR2f3LEipS1R7uD48=
 
 expo-asset@~8.3.3:
   version "8.3.3"
@@ -2659,6 +2718,20 @@ expo-font@~9.2.1:
     expo-modules-core "~0.2.0"
     fontfaceobserver "^2.1.0"
 
+expo-gl-cpp@~10.4.1:
+  version "10.4.1"
+  resolved "https://registry.nlark.com/expo-gl-cpp/download/expo-gl-cpp-10.4.1.tgz?cache=0&sync_timestamp=1626164766898&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fexpo-gl-cpp%2Fdownload%2Fexpo-gl-cpp-10.4.1.tgz#2458393dc00f8cc2c10f63b6868b3b349a3e751f"
+  integrity sha1-JFg5PcAPjMLBD2O2hos7NJo+dR8=
+
+expo-gl@~10.4.2:
+  version "10.4.2"
+  resolved "https://registry.nlark.com/expo-gl/download/expo-gl-10.4.2.tgz?cache=0&sync_timestamp=1626164766861&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fexpo-gl%2Fdownload%2Fexpo-gl-10.4.2.tgz#71df3410abfe3003dec0d4687e50d388c3984f07"
+  integrity sha1-cd80EKv+MAPewNRoflDTiMOYTwc=
+  dependencies:
+    expo-gl-cpp "~10.4.1"
+    expo-modules-core "~0.2.0"
+    invariant "^2.2.4"
+
 expo-keep-awake@~9.2.0:
   version "9.2.0"
   resolved "https://registry.nlark.com/expo-keep-awake/download/expo-keep-awake-9.2.0.tgz#9cbdcc8264c943ef29a58326236cd34267e98f43"
@@ -2684,6 +2757,14 @@ expo-status-bar@~1.0.4:
   version "1.0.4"
   resolved "https://registry.npm.taobao.org/expo-status-bar/download/expo-status-bar-1.0.4.tgz#d8a4c4418b5868c1606969b12bdee85b6fa7d8a4"
   integrity sha1-2KTEQYtYaMFgaWmxK97oW2+n2KQ=
+
+expo-three@^5.7.0:
+  version "5.7.0"
+  resolved "https://registry.npm.taobao.org/expo-three/download/expo-three-5.7.0.tgz#ecbfc0c47222ad742d459847c4a707fe08f36ddc"
+  integrity sha1-7L/AxHIirXQtRZhHxKcH/gjzbdw=
+  dependencies:
+    "@expo/browser-polyfill" "^0.1.1"
+    expo-asset-utils "~2.0.0"
 
 expo@~42.0.1:
   version "42.0.3"
@@ -3049,6 +3130,11 @@ getenv@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npm.taobao.org/getenv/download/getenv-1.0.0.tgz#874f2e7544fbca53c7a4738f37de8605c3fcfc31"
   integrity sha1-h08udUT7ylPHpHOPN96GBcP8/DE=
+
+gl-matrix@^2.4.0:
+  version "2.8.1"
+  resolved "https://registry.npm.taobao.org/gl-matrix/download/gl-matrix-2.8.1.tgz#1c7873448eac61d2cd25803a074e837bd42581a3"
+  integrity sha1-HHhzRI6sYdLNJYA6B06De9QlgaM=
 
 glob-parent@^5.1.2:
   version "5.1.2"
@@ -4259,6 +4345,11 @@ nullthrows@^1.1.1:
   resolved "https://registry.npm.taobao.org/nullthrows/download/nullthrows-1.1.1.tgz?cache=0&sync_timestamp=1592836406238&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fnullthrows%2Fdownload%2Fnullthrows-1.1.1.tgz#7818258843856ae971eae4208ad7d7eb19a431b1"
   integrity sha1-eBgliEOFaulx6uQgitfX6xmkMbE=
 
+nwmatcher@^1.4.1:
+  version "1.4.4"
+  resolved "https://registry.npm.taobao.org/nwmatcher/download/nwmatcher-1.4.4.tgz#2285631f34a95f0d0395cd900c96ed39b58f346e"
+  integrity sha1-IoVjHzSpXw0Dlc2QDJbtObWPNG4=
+
 ob1@0.59.0:
   version "0.59.0"
   resolved "https://registry.nlark.com/ob1/download/ob1-0.59.0.tgz#ee103619ef5cb697f2866e3577da6f0ecd565a36"
@@ -4425,6 +4516,11 @@ p-try@^2.0.0:
   version "2.2.0"
   resolved "https://registry.nlark.com/p-try/download/p-try-2.2.0.tgz#cb2868540e313d61de58fafbe35ce9004d5540e6"
   integrity sha1-yyhoVA4xPWHeWPr741zpAE1VQOY=
+
+parse-bmfont-ascii@1.0.6:
+  version "1.0.6"
+  resolved "https://registry.npm.taobao.org/parse-bmfont-ascii/download/parse-bmfont-ascii-1.0.6.tgz#11ac3c3ff58f7c2020ab22769079108d4dfa0285"
+  integrity sha1-Eaw8P/WPfCAgqyJ2kHkQjU36AoU=
 
 parse-json@^4.0.0:
   version "4.0.0"
@@ -5232,6 +5328,11 @@ stream-buffers@~2.2.0:
   resolved "https://registry.npm.taobao.org/stream-buffers/download/stream-buffers-2.2.0.tgz#91d5f5130d1cef96dcfa7f726945188741d09ee4"
   integrity sha1-kdX1Ew0c75bc+n9yaUUYh0HQnuQ=
 
+string-format@0.5.0:
+  version "0.5.0"
+  resolved "https://registry.npm.taobao.org/string-format/download/string-format-0.5.0.tgz#bfc4a69a250f17f273d97336797daf5dca6ecf30"
+  integrity sha1-v8SmmiUPF/Jz2XM2eX2vXcpuzzA=
+
 string-width@^2.1.0:
   version "2.1.1"
   resolved "https://registry.npm.taobao.org/string-width/download/string-width-2.1.1.tgz?cache=0&sync_timestamp=1618558823901&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fstring-width%2Fdownload%2Fstring-width-2.1.1.tgz#ab93f27a8dc13d28cac815c462143a6d9012ae9e"
@@ -5324,6 +5425,21 @@ temp@0.8.3:
   dependencies:
     os-tmpdir "^1.0.0"
     rimraf "~2.2.6"
+
+tess2@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npm.taobao.org/tess2/download/tess2-1.0.0.tgz#2e2eb21822294061b83d46cbaefdd09d86ddf593"
+  integrity sha1-Li6yGCIpQGG4PUbLrv3QnYbd9ZM=
+
+text-encoding@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.npm.taobao.org/text-encoding/download/text-encoding-0.7.0.tgz#f895e836e45990624086601798ea98e8f36ee643"
+  integrity sha1-+JXoNuRZkGJAhmAXmOqY6PNu5kM=
+
+three@^0.130.1:
+  version "0.130.1"
+  resolved "https://registry.nlark.com/three/download/three-0.130.1.tgz#797588b2877ace31603bbbc864eb2e3022f0b3b4"
+  integrity sha1-eXWIsod6zjFgO7vIZOsuMCLws7Q=
 
 throat@^4.1.0:
   version "4.1.0"
@@ -5536,6 +5652,11 @@ uuid@^7.0.3:
   resolved "https://registry.nlark.com/uuid/download/uuid-7.0.3.tgz#c5c9f2c8cf25dc0a372c4df1441c41f5bd0c680b"
   integrity sha1-xcnyyM8l3Ao3LE3xRBxB9b0MaAs=
 
+uuid@^8.3.2:
+  version "8.3.2"
+  resolved "https://registry.nlark.com/uuid/download/uuid-8.3.2.tgz#80d5b5ced271bb9af6c445f21a1a04c606cefbe2"
+  integrity sha1-gNW1ztJxu5r2xEXyGhoExgbO++I=
+
 vary@~1.1.2:
   version "1.1.2"
   resolved "https://registry.nlark.com/vary/download/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
@@ -5559,6 +5680,11 @@ wcwidth@^1.0.1:
   integrity sha1-8LDc+RW8X/FSivrbLA4XtTLaL+g=
   dependencies:
     defaults "^1.0.3"
+
+webidl-conversions@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.npm.taobao.org/webidl-conversions/download/webidl-conversions-4.0.2.tgz#a855980b1f0b6b359ba1d5d9fb39ae941faa63ad"
+  integrity sha1-qFWYCx8LazWbodXZ+zmulB+qY60=
 
 whatwg-fetch@>=0.10.0, whatwg-fetch@^3.0.0:
   version "3.6.2"
@@ -5672,6 +5798,13 @@ xmldoc@^1.1.2:
   integrity sha1-ZmbgKf4lRw1ZnNMOI/8NHtUEZtc=
   dependencies:
     sax "^1.2.1"
+
+xmldom-qsa@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.npm.taobao.org/xmldom-qsa/download/xmldom-qsa-1.0.3.tgz#3b70a440997982aa323f911a8b8c3c7db6a6ff1f"
+  integrity sha1-O3CkQJl5gqoyP5Eai4w8fbam/x8=
+  dependencies:
+    nwmatcher "^1.4.1"
 
 xmldom@^0.5.0, xmldom@~0.5.0:
   version "0.5.0"
