@@ -12,15 +12,27 @@ import {
 import { PixelRatio } from "react-native";
 import fontJson from "./fonts/Microsoft_YaHei_Regular.json";
 import boardResource from "./assets/board.png";
-import { View, Spinner, Center, KeyboardAvoidingView } from "native-base";
+import {
+  Spinner,
+  Center,
+  KeyboardAvoidingView,
+  Button,
+  useToast,
+} from "native-base";
+import * as MediaLibrary from "expo-media-library";
+
 // import { Asset } from "expo-asset";
+// Dimensions
+
 const font = new THREE.FontLoader().parse(fontJson);
 
 const ratio = PixelRatio.get();
 
 export default function App(props) {
-  const [loading, setLoading] = useState(false);
   const { text } = props;
+  const [loading, setLoading] = useState(false);
+  const [gl, setGL] = useState();
+  const toast = useToast();
   let timeout;
 
   React.useEffect(() => {
@@ -34,6 +46,26 @@ export default function App(props) {
       setLoading(false);
     }, 200);
   }, [text]);
+
+  const handleSave = async () => {
+    if (!gl) {
+      return;
+    }
+    const { drawingBufferWidth: width, drawingBufferHeight: height } = gl;
+    const { localUri } = await GLView.takeSnapshotAsync(gl, {
+      format: "png",
+      rect: {
+        x: (width - 328 * ratio) / 2,
+        y: (height - 254 * ratio) / 2,
+        width: 328 * ratio,
+        height: 254 * ratio,
+      },
+    });
+    await MediaLibrary.saveToLibraryAsync(localUri);
+    toast.show({
+      title: "保存成功！",
+    });
+  };
 
   return (
     <KeyboardAvoidingView
@@ -49,41 +81,51 @@ export default function App(props) {
         </Center>
       )}
       {!loading && (
-        <GLView
-          style={{ flex: 1 }}
-          onContextCreate={async (gl) => {
-            const { drawingBufferWidth: width, drawingBufferHeight: height } =
-              gl;
-            const sceneColor = 0x6ad6f0;
+        <>
+          <GLView
+            style={{ flex: 1 }}
+            onContextCreate={async (gl) => {
+              const { drawingBufferWidth: width, drawingBufferHeight: height } =
+                gl;
+              const sceneColor = 0x6ad6f0;
+              // Create a WebGLRenderer without a DOM element
+              const renderer = new Renderer({ gl });
+              renderer.setSize(width, height);
+              renderer.setClearColor(sceneColor);
 
-            // Create a WebGLRenderer without a DOM element
-            const renderer = new Renderer({ gl });
-            renderer.setSize(width, height);
-            renderer.setClearColor(sceneColor);
+              const camera = new PerspectiveCamera(
+                50,
+                width / height,
+                0.1,
+                2000
+              );
+              camera.position.z = 10;
 
-            const camera = new PerspectiveCamera(50, width / height, 0.1, 2000);
-            camera.position.z = 10;
+              // const asset = Asset.fromModule(boardResource);
+              // await asset.downloadAsync();
 
-            // const asset = Asset.fromModule(boardResource);
-            // await asset.downloadAsync();
+              const scene = new Scene();
+              const cube = new ImageMesh();
+              cube.scale.x = (328 * ratio) / 200;
+              cube.scale.y = (254 * ratio) / 200;
+              scene.add(cube);
+              camera.lookAt(scene.position);
 
-            const scene = new Scene();
-            const cube = new ImageMesh();
-            scene.add(cube);
-            camera.lookAt(scene.position);
+              const textMesh = new TextMesh(text || "");
+              textMesh.position.set(-0.48, 0.48, 1);
+              scene.add(textMesh);
 
-            const textMesh = new TextMesh(text || "");
-            textMesh.position.set(-0.4, 0.4, 1);
-            scene.add(textMesh);
-
-            const render = () => {
-              timeout = requestAnimationFrame(render);
-              renderer.render(scene, camera);
-              gl.endFrameEXP();
-            };
-            render();
-          }}
-        />
+              const render = () => {
+                timeout = requestAnimationFrame(render);
+                renderer.render(scene, camera);
+                gl.endFrameEXP();
+              };
+              render();
+              setGL(gl);
+            }}
+          />
+          <Button onPress={handleSave}>保存到相册</Button>
+        </>
       )}
     </KeyboardAvoidingView>
   );
@@ -92,7 +134,7 @@ export default function App(props) {
 class ImageMesh extends Mesh {
   constructor() {
     super(
-      new PlaneGeometry(ratio, ratio, 1),
+      new PlaneGeometry(1, 1, 1),
       new MeshBasicMaterial({
         map: new TextureLoader().load(boardResource),
         // color: 0xff0000,
@@ -104,11 +146,11 @@ class ImageMesh extends Mesh {
 class TextMesh extends Mesh {
   constructor(text) {
     super(
-      new ShapeGeometry(font.generateShapes(text, 0.2)),
+      new ShapeGeometry(font.generateShapes(text, 0.24)),
       new MeshBasicMaterial({
         color: 0xff0000,
         transparent: true,
-        opacity: 0.8,
+        opacity: 1,
         // side: THREE.DoubleSide,
       })
     );
