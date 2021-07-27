@@ -9,13 +9,14 @@ import {
   Heading,
 } from "native-base";
 import GenGLView from "./gen-gl-view";
-
+import { Keyboard, TouchableOpacity } from "react-native";
 export const InputView = ({ onOk, value, setValue }) => {
   const handleChange = (val) => {
     setValue(val);
   };
   const handleClick = () => {
     onOk && onOk(value);
+    Keyboard.dismiss();
   };
   return (
     <View>
@@ -31,7 +32,7 @@ export const InputView = ({ onOk, value, setValue }) => {
         <Input
           value={value}
           onChangeText={handleChange}
-          placeholder="Value Controlled Input"
+          placeholder="Input your IDOL's name"
           InputRightElement={
             <Button
               ml={1}
@@ -58,7 +59,15 @@ export default function App() {
   return (
     <NativeBaseProvider>
       <InputView value={value} setValue={setValue} onOk={onOk} />
-      <GenGLView text={text} />
+      <TouchableOpacity
+        onPress={() => {
+          Keyboard.dismiss();
+        }}
+        activeOpacity={1}
+        style={{ flex: 1 }}
+      >
+        <GenGLView text={text} />
+      </TouchableOpacity>
     </NativeBaseProvider>
   );
 }

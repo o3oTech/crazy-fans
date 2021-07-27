@@ -12,7 +12,7 @@ import {
 import { PixelRatio } from "react-native";
 import fontJson from "./fonts/Microsoft_YaHei_Regular.json";
 import boardResource from "./assets/board.png";
-import { View, Spinner, Center } from "native-base";
+import { View, Spinner, Center, KeyboardAvoidingView } from "native-base";
 // import { Asset } from "expo-asset";
 const font = new THREE.FontLoader().parse(fontJson);
 
@@ -36,7 +36,13 @@ export default function App(props) {
   }, [text]);
 
   return (
-    <View style={{ flex: 1 }}>
+    <KeyboardAvoidingView
+      style={{ flex: 1 }}
+      h={{
+        base: "600px",
+        lg: "auto",
+      }}
+    >
       {loading && (
         <Center style={{ flex: 1 }}>
           <Spinner color="gray.900" />
@@ -64,6 +70,7 @@ export default function App(props) {
             const scene = new Scene();
             const cube = new ImageMesh();
             scene.add(cube);
+            camera.lookAt(scene.position);
 
             const textMesh = new TextMesh(text || "");
             textMesh.position.set(-0.4, 0.4, 1);
@@ -78,7 +85,7 @@ export default function App(props) {
           }}
         />
       )}
-    </View>
+    </KeyboardAvoidingView>
   );
 }
 
