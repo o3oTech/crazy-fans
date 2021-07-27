@@ -1,85 +1,64 @@
-import { GLView } from "expo-gl";
-import { Renderer, TextureLoader } from "expo-three";
-import * as React from "react";
+import React, { useState } from "react";
 import {
-  PerspectiveCamera,
-  Scene,
-  Mesh,
-  PlaneGeometry,
-  MeshBasicMaterial,
-  ShapeGeometry,
-} from "three";
-import fontJson from "./fonts/Microsoft_YaHei_Regular.json";
+  NativeBaseProvider,
+  Button,
+  View,
+  Input,
+  Stack,
+  Center,
+  Heading,
+} from "native-base";
+import GenGLView from "./gen-gl-view";
 
-const font = new THREE.FontLoader().parse(fontJson);
+export const InputView = ({ onOk, value, setValue }) => {
+  const handleChange = (val) => {
+    setValue(val);
+  };
+  const handleClick = () => {
+    onOk && onOk(value);
+  };
+  return (
+    <View>
+      <Stack
+        space={4}
+        w="100%"
+        safeArea
+        style={{ paddingLeft: 8, paddingRight: 8 }}
+      >
+        <Center>
+          <Heading>Input your IDOL's name</Heading>
+        </Center>
+        <Input
+          value={value}
+          onChangeText={handleChange}
+          placeholder="Value Controlled Input"
+          InputRightElement={
+            <Button
+              ml={1}
+              roundedLeft={0}
+              roundedRight="md"
+              onPress={handleClick}
+            >
+              Submit
+            </Button>
+          }
+        />
+      </Stack>
+    </View>
+  );
+};
 
 export default function App() {
-  let timeout;
-
-  React.useEffect(() => {
-    // Clear the animation loop when the component unmounts
-    return () => clearTimeout(timeout);
-  }, []);
-
+  const initialText = "IDOL";
+  const [value, setValue] = useState(initialText);
+  const [text, setText] = useState(initialText);
+  const onOk = (val) => {
+    setText(val);
+  };
   return (
-    <GLView
-      style={{ flex: 1 }}
-      onContextCreate={async (gl) => {
-        const { drawingBufferWidth: width, drawingBufferHeight: height } = gl;
-        const sceneColor = 0x6ad6f0;
-
-        // Create a WebGLRenderer without a DOM element
-        const renderer = new Renderer({ gl });
-        renderer.setSize(width, height);
-        renderer.setClearColor(sceneColor);
-
-        const camera = new PerspectiveCamera(50, width / height, 0.1, 2000);
-        camera.position.z = 10;
-
-        const scene = new Scene();
-
-        const cube = new ImageMesh();
-        scene.add(cube);
-
-        const text = new TextMesh();
-        text.position.set(-0.7, 0, 1);
-        scene.add(text);
-
-        const render = () => {
-          timeout = requestAnimationFrame(render);
-          renderer.render(scene, camera);
-          gl.endFrameEXP();
-        };
-        render();
-      }}
-    />
+    <NativeBaseProvider>
+      <InputView value={value} setValue={setValue} onOk={onOk} />
+      <GenGLView text={text} />
+    </NativeBaseProvider>
   );
-}
-
-class ImageMesh extends Mesh {
-  constructor() {
-    super(
-      new PlaneGeometry(3, 3, 1),
-      new MeshBasicMaterial({
-        map: new TextureLoader().load(
-          require("./assets/FloorsCheckerboard_S_Diffuse.jpg")
-        ),
-        // color: 0xff0000,
-      })
-    );
-  }
-}
-
-class TextMesh extends Mesh {
-  constructor() {
-    super(
-      new ShapeGeometry(font.generateShapes("中国人", 0.35)),
-      new MeshBasicMaterial({
-        color: 0xff0000,
-        transparent: true,
-        opacity: 0.8,
-        side: THREE.DoubleSide,
-      })
-    );
-  }
 }
