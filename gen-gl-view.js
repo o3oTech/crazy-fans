@@ -10,7 +10,8 @@ import {
   ShapeGeometry,
 } from "three";
 import { PixelRatio } from "react-native";
-import fontJson from "./fonts/optimer_regular.typeface.json";
+// import fontJson from "./fonts/optimer_regular.typeface.json";
+import fontJson from "./fonts/zcool_xiaowei.typeface.json";
 import boardResource from "./assets/board.png";
 import {
   Spinner,

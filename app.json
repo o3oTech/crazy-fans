@@ -2,7 +2,7 @@
   "expo": {
     "name": "IdolMaker",
     "slug": "IdolMaker",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "orientation": "portrait",
     "owner": "o3o.tech",
     "icon": "./assets/icon.png",
@@ -29,6 +29,9 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "packagerOpts": {
+      "nonPersistent": true
+    }    
   }
 }
