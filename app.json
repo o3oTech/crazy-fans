@@ -1,9 +1,10 @@
 {
   "expo": {
-    "name": "bestFans",
-    "slug": "bestFans",
-    "version": "1.0.0",
+    "name": "IdolMaker",
+    "slug": "IdolMaker",
+    "version": "0.0.1",
     "orientation": "portrait",
+    "owner": "o3o.tech",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
@@ -17,7 +18,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "o3o.tech"
     },
     "android": {
       "adaptiveIcon": {

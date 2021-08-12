@@ -10,7 +10,7 @@ import {
   ShapeGeometry,
 } from "three";
 import { PixelRatio } from "react-native";
-import fontJson from "./fonts/Microsoft_YaHei_Regular.json";
+import fontJson from "./fonts/optimer_regular.typeface.json";
 import boardResource from "./assets/board.png";
 import {
   Spinner,
@@ -20,9 +20,6 @@ import {
   useToast,
 } from "native-base";
 import * as MediaLibrary from "expo-media-library";
-
-// import { Asset } from "expo-asset";
-// Dimensions
 
 const font = new THREE.FontLoader().parse(fontJson);
 
@@ -100,10 +97,6 @@ export default function App(props) {
                 2000
               );
               camera.position.z = 10;
-
-              // const asset = Asset.fromModule(boardResource);
-              // await asset.downloadAsync();
-
               const scene = new Scene();
               const cube = new ImageMesh();
               cube.scale.x = (328 * ratio) / 200;
