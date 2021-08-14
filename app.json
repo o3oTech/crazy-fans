@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "IdolMaker",
+    "name": "狂粉生成器",
     "slug": "IdolMaker",
-    "version": "0.0.2",
+    "version": "0.1.0",
     "orientation": "portrait",
     "owner": "o3o.tech",
     "icon": "./assets/icon.png",

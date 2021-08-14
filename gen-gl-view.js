@@ -105,8 +105,9 @@ export default function App(props) {
               scene.add(cube);
               camera.lookAt(scene.position);
 
-              const textMesh = new TextMesh(text || "");
-              textMesh.position.set(-0.48, 0.48, 1);
+              const textMesh = new TextMesh(text || "IDOL");
+              textMesh.position.set(0, 22 * 0.01 * ratio, 0);
+
               scene.add(textMesh);
 
               const render = () => {
@@ -137,15 +138,24 @@ class ImageMesh extends Mesh {
   }
 }
 
+const generateTextMeshGeometry = (message) => {
+  const shapes = font.generateShapes(message, 30 * 0.01);
+  const geometry = new ShapeGeometry(shapes);
+  geometry.computeBoundingBox();
+  const xMid = -0.5 * (geometry.boundingBox.max.x - geometry.boundingBox.min.x);
+  const yMid = -0.5 * (geometry.boundingBox.max.y - geometry.boundingBox.min.y);
+  geometry.translate(xMid, yMid, 0);
+  return geometry;
+};
 class TextMesh extends Mesh {
-  constructor(text) {
+  constructor(message) {
     super(
-      new ShapeGeometry(font.generateShapes(text, 0.24)),
+      generateTextMeshGeometry(message),
       new MeshBasicMaterial({
         color: 0xff0000,
         transparent: true,
         opacity: 1,
-        // side: THREE.DoubleSide,
+        side: THREE.DoubleSide,
       })
     );
   }

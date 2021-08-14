@@ -27,12 +27,12 @@ export const InputView = ({ onOk, value, setValue }) => {
         style={{ paddingLeft: 8, paddingRight: 8 }}
       >
         <Center>
-          <Heading>Input your IDOL's name</Heading>
+          <Heading>支持你喜欢的爱豆</Heading>
         </Center>
         <Input
           value={value}
           onChangeText={handleChange}
-          placeholder="Input your IDOL's name"
+          placeholder="键入你的爱豆"
           InputRightElement={
             <Button
               ml={1}
@@ -40,7 +40,7 @@ export const InputView = ({ onOk, value, setValue }) => {
               roundedRight="md"
               onPress={handleClick}
             >
-              Submit
+              确认
             </Button>
           }
         />
@@ -50,7 +50,7 @@ export const InputView = ({ onOk, value, setValue }) => {
 };
 
 export default function App() {
-  const initialText = "IDOL";
+  const initialText = "";
   const [value, setValue] = useState(initialText);
   const [text, setText] = useState(initialText);
   const onOk = (val) => {
